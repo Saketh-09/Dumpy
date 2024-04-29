@@ -18,11 +18,14 @@ We can produce the results by following procedure.
 All the configurations are integrated into `Const.py`, including all the parameters and all the functions of this repo.
 
 Create a Virtual Environment by using:
+```
 python3 -m venv myenv 
 source myenv/bin/activate
-
+```
 Install the dependencies:
+```
 pip install -r requirements.txt
+```
 
 Build the index by running the Python script with appropriate parameters specified in `Const.py`.
 
