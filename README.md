@@ -19,6 +19,7 @@ Utilizing SIMD (Single Instruction, Multiple Data) techniques is crucial for opt
 
 ## Reproducibility
 We can produce the results by following procedure. All the configurations are integrated into `Const.py`, including all the parameters and all the functions of this repo.
+We recommend to download at least five files from the dataset mentioned below and udpate them accordingly in data folder and Const.py.
 
 1. Create a Virtual Environment by using:
 
@@ -33,9 +34,9 @@ We can produce the results by following procedure. All the configurations are in
     pip install -r requirements.txt
     ```
 
-3. Build the index by running the Python script with appropriate parameters specified in `Const.py`.
+3. Build the index by running the Python script with appropriate parameters specified in `Const.py` and executing the main file.
 
-4. Run queries using the Python script to perform exact or approximate searches based on the specified index type (Dumpy or Dumpy-Fuzzy).
+4. By executing the Python scripts exact or approximate are performed which searches based on the specified index type (Dumpy or Dumpy-Fuzzy).
 
 ## Datasets
 The dataset we used (Deep) are now in [OneDrive](https://cometmail-my.sharepoint.com/:f:/g/personal/sxa230044_utdallas_edu/EhlOXDuieqhPt1aEgq0ppK8BgS2NfBBY2ZuuE0JYYBrRrA?e=H7KCrb). Download the data set & update the paths in `Const.py`.
