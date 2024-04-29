@@ -1,10 +1,13 @@
+import heapq
 import os
+import pickle
 from typing import List
 
 import numpy as np
 import math
 
 from src.Const import Const
+from src.IndexConstruction.fuzzy import partUnit
 from src.Utils.MathUtil import MathUtil
 from collections import defaultdict
 from heapq import heappop, heappush
@@ -529,9 +532,9 @@ class Node:
             if s.needDeepCopy:
                 s.copyData()
 
-    def BuildingIndex(self, datafn, saxfn):
+    def building_index(self, datafn, saxfn):
         print("Start building index.")
-        # FileUtil.checkDirClean(Const.idxfn.c_str()) # FileUtil implementation is missing
+        # FileUtil.checkDirClean(Const.idxfn.c_str())
         self.loadCombines()
         series_number = self.generateSaxTbl()
 
@@ -541,7 +544,7 @@ class Node:
         nodeIn1stLayer = [partUnit() for _ in range(Const.vertexNum)]
         navids = [0] * series_number
 
-        # Obtain initial layer node size
+        # initial layer node size
         for index in range(series_number):
             asax = self.saxes[index * Const.segmentNum: (index + 1) * Const.segmentNum]
             nav_id = ConversionUtil.invSaxHeadFromSax(asax, Const.bitsCardinality, Const.segmentNum)
@@ -550,7 +553,7 @@ class Node:
 
         print("Finish statistic size of nodes in the 1st layer.")
 
-        # Partition 1st layer
+        # partition 1st layer
         partNum = self.partition(nodeIn1stLayer, Const.segmentNum)
         print("Finish partition")
         childrenList = [Node(1, index) for index in range(partNum)]
@@ -572,7 +575,7 @@ class Node:
 
         print("Finish build index structure 1st layer.")
 
-        # Add data offsets to internal nodes in first layer
+        # add data offsets to internal nodes in first layer
         for i in range(Const.vertexNum):
             if nodeIn1stLayer[i].s > Const.th:
                 root.ch[i].offsets = []
@@ -595,7 +598,7 @@ class Node:
         print("Build index skeleton finished.")
 
         print("Start materialize leaves")
-        # materializeAllLeavesWithSax(datafn, root, navids, Const.idxfn, saxes) # implementation is missing
+        # materializeAllLeavesWithSax(datafn, root, navids, Const.idxfn, saxes)
         print("Build index successfully!")
         del self.saxes
 
@@ -948,10 +951,6 @@ class PqItemSeries:
         self.needDeepCopy = needDeepCopy
         self.isLeafNode = isLeafNode
 
-    def copyData(self):
-        # Your implementation to copy data goes here
-        pass
-
 
 class TimeSeries:
     pass
@@ -988,7 +987,7 @@ class Const:
     vertexNum = 100
     th = 50
     segmentNum = 10
-    idxfn = ""  # Add path for idxfn
+    idxfn = ""
     f_high = 0.3
     f_low = 0.03
 
@@ -1127,24 +1126,12 @@ class pack:
             self.insert(member, chosen_segment_number)
 
 
-class ConversionUtil:
-    @staticmethod
-    def paa_and_sax_from_ts(ts, paas, saxes, ts_length_per_segment, segment_num, cardinality):
-        # Your PAA and SAX conversion logic here
-        pass
-
-    @staticmethod
-    def sax_from_ts(ts, saxes, ts_length_per_segment, segment_num, cardinality):
-        # Your SAX conversion logic here
-        pass
 
 
 def main():
-    # Example usage
     node = Node.load_from_disk("sax.bin", "index.bin", True)
     node.get_index_stats()
 
 
 if __name__ == "__main__":
     main()
-# Implement FileUtil, PAA_INFO, and other missing classes and methods

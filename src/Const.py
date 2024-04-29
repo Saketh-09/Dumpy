@@ -1,6 +1,7 @@
 import os
 import numpy as np
 
+
 class Const:
     dataset = "deep"
     index = 1
@@ -43,18 +44,17 @@ class Const:
     fuzzyidxfn = "/mnt/c/Series4Similarity_Search/deep/fuzzy-index/"
     datafn = "/mnt/c/Series4Similarity_Search/deep/deep1b-96-100m.bin"
     queryfn = "/mnt/c/Series4Similarity_Search/deep/deep1b-96-1k.bin"
-    tsLength = 96
+    ts_length = 96
     maxK = 500
-    tsLengthPerSegment = -1
+    ts_length_per_egment = -1
     cardinality = -1
-    tsLengthBytes = -1
+    ts_length_bytes = -1
     vertex_num = -1
     offset = -1
 
     @staticmethod
-    def readConfig():
+    def read_config():
         print("Reading configuration...")
-        # Example configuration
         Const.dataset = "ExampleDataset"
         Const.index = 1
         Const.query_num = 10
@@ -65,7 +65,8 @@ class Const:
 
     @staticmethod
     def logPrint(msg):
-        print(msg)  # Logging method
+        # logging method
+        print(msg)
 
 def main():
     Const.readConfig()

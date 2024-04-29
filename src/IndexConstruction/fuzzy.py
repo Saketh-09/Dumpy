@@ -160,40 +160,6 @@ def materializeInterNodeFuzzy(node, saxes, actual_size, navigating_tbl):
             rest -= number
             current += number
 
-class ConversionUtil:
-    @staticmethod
-    def extendSax(sax, bits_cardinality, chosenSegments):
-        pass
-
-    @staticmethod
-    def invSaxHeadFromSax(sax, bitsCardinality, segmentNum):
-        pass
-
-    @staticmethod
-    def findFirstGE(power_2, start, end, value):
-        pass
-
-    @staticmethod
-    def getValueRange(sax_symbol, bits_cardinality, lb, ub):
-        pass
-
-class FileUtil:
-    @staticmethod
-    def checkDirClean(dir_path):
-        pass
-
-    @staticmethod
-    def fileRemove(file_path):
-        pass
-
-class MathUtil:
-    @staticmethod
-    def generateMask(segmentNum):
-        pass
-
-def partition(nodeIn1stLayer, vertexNum):
-    pass
-
 def BuildIndexFuzzy(datafn, saxfn, paixfn, fuzzyidxfn, vertexNum, s_len, segmentNum, th, fbl_series_num, delta, logPrint):
     Const.logPrint = logPrint
     Const.segmentNum = segmentNum
@@ -213,7 +179,7 @@ def BuildIndexFuzzy(datafn, saxfn, paixfn, fuzzyidxfn, vertexNum, s_len, segment
     index = None
     sa = None
 
-    # Construct the sax and paix files
+    # construct the sax and paix files
     Const.logPrint("Start construct the sax and paix files.")
     with open(saxfn, "rb") as f:
         sax = np.fromfile(f, dtype=np.int32, count=Const.vertexNum * Const.tsLength)
@@ -232,7 +198,7 @@ def BuildIndexFuzzy(datafn, saxfn, paixfn, fuzzyidxfn, vertexNum, s_len, segment
     saxes = None
     actual_size = None
 
-    # Construct index for inter nodes
+    # construct index for inter nodes
     Const.logPrint("Start construct index for inter nodes.")
     with open(saxfn, "rb") as f:
         saxes = np.fromfile(f, dtype=np.int32, count=Const.vertexNum * Const.tsLength)
@@ -247,19 +213,18 @@ def BuildIndexFuzzy(datafn, saxfn, paixfn, fuzzyidxfn, vertexNum, s_len, segment
     Const.logPrint("Finish build index for all nodes.")
 
 def main():
-    # Specify the parameters
+
     datafn = "your_data_file_name"
     saxfn = "your_sax_file_name"
     paixfn = "your_paix_file_name"
     fuzzyidxfn = "your_fuzzy_index_file_name"
-    vertexNum = 10  # Specify your vertexNum
-    s_len = 100  # Specify your s_len
-    segmentNum = 7  # Specify your segmentNum
-    th = 0.2  # Specify your th
-    fbl_series_num = 2  # Specify your fbl_series_num
-    delta = 1  # Specify your delta
-
-    # Call the function to build the index
+    vertexNum = 10
+    s_len = 100
+    segmentNum = 7
+    th = 0.2
+    fbl_series_num = 2
+    delta = 1
+    # call the function to build the index
     BuildIndexFuzzy(datafn, saxfn, paixfn, fuzzyidxfn, vertexNum, s_len, segmentNum, th, fbl_series_num, delta, print)
 
 if __name__ == "__main__":

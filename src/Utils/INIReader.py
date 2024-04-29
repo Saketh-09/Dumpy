@@ -13,7 +13,7 @@ class INIReader:
                 content = file.read()
                 return self._parse_string(content)
         except FileNotFoundError:
-            return 1  # Error code for file not found
+            return 1
 
     def _parse_string(self, content):
         lines = content.split('\n')
@@ -29,7 +29,7 @@ class INIReader:
                 if current_section:
                     key = f'{current_section}={key}'
                 self._values[key] = value
-        return 0  # No error
+        return 0
 
     def parse_error(self):
         return self._error

@@ -1,3 +1,11 @@
+from typing import List
+
+import numpy as np
+
+from src.Const import Const
+from src.IndexConstruction.Node import Node, TimeSeries, PqItemSeries
+
+
 class Searcher:
     @staticmethod
     def approxSearch(root: Node, query: np.ndarray, k: int, g: List[List[int]], index_dir: str) -> List[PqItemSeries]:
@@ -5,7 +13,8 @@ class Searcher:
         heap = []
 
         sax = np.array(queryTs.sax)
-        head = invSaxHeadFromSax(sax, Const.bitsCardinality, Const.segmentNum)
+        # head = invSaxHeadFromSax(sax, Const.bitsCardinality, Const.segmentNum)
+        head = 0
         current = root.ch[head]
 
         if current is None:

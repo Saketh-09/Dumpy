@@ -2,6 +2,7 @@ import sys
 import os
 import threading
 import time
+from _ctypes import sizeof
 from typing import List
 
 from src.Const import Const
@@ -70,8 +71,6 @@ def approx_search_more_node():
             print(j + 1, ": ", TimeSeriesUtil.time_series_to_line(item.ts))
 
 
-# Define other functions in a similar way
-
 
 def main():
     Const.read_config()
@@ -84,43 +83,8 @@ def main():
             build_dumpy()
         elif ops == 1:
             approx_search_one_node()
-        elif ops == 2:
-            # Call corresponding function for exact search
-            pass
-        elif ops == 3:
-            # Call corresponding function for index stats
-            pass
         elif ops == 4:
             approx_search_more_node()
-        elif ops == 5:
-            # Call corresponding function for DTW
-            pass
-        elif ops == 6:
-            # Call corresponding function for DTW
-            pass
-        elif ops == 7:
-            # Call corresponding function for ngSearch
-            pass
-        elif ops == 8:
-            # Call corresponding function for DTW
-            pass
-    elif Const.index == 2:
-        ops = Const.ops
-        if ops == 0:
-            # Call corresponding function for fuzzy
-            pass
-        elif ops == 1:
-            # Call corresponding function for fuzzy
-            pass
-        elif ops == 3:
-            # Call corresponding function for index stats
-            pass
-        elif ops == 4:
-            # Call corresponding function for fuzzy
-            pass
-        elif ops == 7:
-            # Call corresponding function for ngSearch
-            pass
 
 
 if __name__ == "__main__":
