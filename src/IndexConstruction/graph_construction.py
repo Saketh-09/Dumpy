@@ -1,6 +1,6 @@
 import threading
-from Utils.MathUtil import MathUtil
-from Utils.FileUtil import FileUtil
+from ..Utils.MathUtil import MathUtil
+from ..Utils.FileUtil import FileUtil
 
 def func(s, e, neighbor_number, neighbor_bits, segment_number, graph_file_name):
     graph_skeleton = [0] * neighbor_number

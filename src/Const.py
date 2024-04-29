@@ -37,8 +37,8 @@ class Const:
 
     pre_read = 1
     bits_reserve = -1
-    paafn = "../data/paa/deep-96-100m-16.bin"
-    saxfn = "../data/sax/deep-96-100m-16.bin"
+    paafn = "../data/paa/deep1b-1k-q.bin"
+    saxfn = "../data/sax/deep1b-96k-100m.bin"
     idxfn = "../data/non-mat/deep-96-100m-16.bin_le"
     memoryidxfn = "/mnt/c/Series4Similarity_Search/deep/memory/"
     fuzzyidxfn = "/mnt/c/Series4Similarity_Search/deep/fuzzy-index/"
